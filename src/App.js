@@ -2,7 +2,7 @@ import './App.css';
 import React, { useState } from 'react';
 
 function App() {
-  const [date, setDate] = useState();
+  const [date, setTheDate] = useState();
   const [week, setWeek] = useState();
 
   const findWeek = (dateInput) => {
@@ -31,7 +31,7 @@ function App() {
   }
 
   const handleChange = e => {
-    setDate(e.target.value);
+    setTheDate(e.target.value);
   }
   const handleSubmit = e => {
     e.preventDefault();
@@ -39,21 +39,32 @@ function App() {
     setWeek(week);
   }
 
+  const defaultWeek = () => {
+    let today = new Date();
+    setTheDate(today);
+    let currentWeek = findWeek(today)
+    setWeek(currentWeek);
+    console.log("yo",date)
+  }
+
   return (
     <div className="App">
       <h1>Week Lookup</h1>
       <form onSubmit={ handleSubmit }>
-        <input type="text" placeholder="XX/XX/XXXX" onChange={handleChange} />
-        <input type="submit"/>
+        <input type="text" placeholder="XX/XX/XXXX" onChange={handleChange} className="text-input"/>
+        <input type="submit" className="input-btn"/>
       </form>
+      <div className="card-container">
       {
         week ? week.map(day => {
-          return <div key={day[1]}>
-            <span>{day[0] + " - "}</span>
+          return <div key={day[1]} className="week-card">
+            
+            <span>{day[0]}</span>
             <span>{day[1].split(",")[0]}</span>
           </div>
-        }) : null
+        }) : defaultWeek()
       }
+      </div>
     </div>
   );
 }

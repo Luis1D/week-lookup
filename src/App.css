@@ -1,38 +1,50 @@
 .App {
-  text-align: center;
+  color: rgba(0, 0, 0, 0.822);
+  /* background-color: rgb(245, 245, 245); */
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 1rem;
+  border-radius: .5rem;
+  padding: 0 1rem .5rem 1rem;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  width: 100%;
+  text-align: left;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+form {
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-evenly;
+  margin-top: 1rem;
+}
+.text-input {
+  width: 90%;
+  padding: .5rem;
+  outline: none;
+  border-radius: .25rem;
+  border: none;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.input-btn {
+  width: 10rem;
+  padding: .5rem;
+  margin-left: .5rem;
+  border-radius: .25rem;
+  border: none;
+  font-weight: bold;
+  background-color: #283AC7;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.card-container {
+  margin-top: 2rem; 
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.week-card {
+  background-color: white;
+  margin-top: .75rem;
+  padding: .5rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  border-radius: .5rem;
 }
