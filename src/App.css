@@ -1,22 +1,21 @@
 .App {
-  color: rgba(0, 0, 0, 0.822);
-  /* background-color: rgb(245, 245, 245); */
   width: 90%;
   margin: 0 auto;
   margin-top: 1rem;
   border-radius: .5rem;
   padding: 0 1rem .5rem 1rem;
 }
-h1 {
+/* h1 {
   width: 100%;
   text-align: left;
-}
-form {
+} */
+/* form {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
   margin-top: 1rem;
-}
+} */
+
 .text-input {
   width: 90%;
   padding: .5rem;
@@ -36,15 +35,58 @@ form {
   background-color: #283AC7;
   color: white;
 }
-.card-container {
-  margin-top: 2rem; 
-}
-.week-card {
-  background-color: white;
-  margin-top: .75rem;
-  padding: .5rem;
-  font-weight: bold;
+.month-picker {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+.month {
+  font-size: 1.25rem;
+}
+.card-wrapper {
+  margin-top: 1rem;
+  background-color: white;
+  border-radius: 1rem;
+  padding: .75rem;
+  box-shadow: 0 .25rem 1rem .25rem rgba(0, 0, 0, 0.151);
+}
+.month-picker-btn {
+  border-radius: .25rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  box-shadow: 0 .05rem .15rem 0rem rgba(0, 0, 0, 0.507);
+  border: none;
+  background-color: #fff;
+}
+.month-picker-btn:hover {
+  cursor: pointer;
+}
+.card-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  width: 100%;
+  margin: 0 auto;
+}
+.week-card {
+  margin: .5rem .5rem 0 0;
+  padding: .5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border-radius: .5rem;
+  font-weight: bold;
+}
+.spot-light {
+  border: .15rem solid #283bc73d;
+  color: #2872c7
+}
+.day-of-week {
+  font-size: .6rem;
+}
+.date {
+  font-size: .6rem;
 }
