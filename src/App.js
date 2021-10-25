@@ -38,13 +38,19 @@ function App() {
   }
 
   const nextMonth = () => {
-    
+    const month = new Date(date.setFullYear(date.getFullYear(), date.getMonth() + 1, 1))
+    setTheDate(month);
+    let week = findWeek(month);
+    setWeek(week);
   }
 
   const prevMonth = () => {
-
+    const month = new Date(date.setFullYear(date.getFullYear(), date.getMonth() - 1, 1))
+    setTheDate(month);
+    let week = findWeek(month);
+    setWeek(week);
   }
-
+  
   return (
     <div className="App">
       {/* <form onSubmit={ handleSubmit }>
@@ -61,7 +67,11 @@ function App() {
         <div className="card-container">
         {
           week ? week.map(day => {
-            return <div key={day} className={ day.getDate() === date.getDate() ? "spot-light week-card" : "week-card" }>
+            return <div 
+              key={day} 
+              className={ day.getDate() === date.getDate() ? "spot-light week-card" : "week-card" }
+              // onClick={ selectDate }
+              >
               <span className="day-of-week">{ days[day.getDay()] }</span>
               <span className="date">{ day.getDate() }</span>
             </div>
