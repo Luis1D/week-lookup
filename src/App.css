@@ -18,7 +18,7 @@ form {
   width: 90%;
   padding: .5rem;
   outline: none;
-  border-radius: .25rem;
+  border-radius: .5rem;
   border: none;
   font-weight: bold;
   font-size: 1rem;
@@ -27,10 +27,10 @@ form {
   width: 10rem;
   padding: .5rem;
   margin-left: .5rem;
-  border-radius: .25rem;
+  border-radius: .5rem;
   border: none;
   font-weight: bold;
-  background-color: #283AC7;
+  background-color: #285ac7;
   color: white;
 }
 .month-picker {
@@ -78,16 +78,8 @@ form {
   border-radius: .5rem;
   font-weight: bold;
 }
-
-.date-details {
-  background-color: #fff;
-  border-radius: .5rem;
-  padding: 1rem;
-  margin-top: 1rem;
-  box-shadow: 0 .25rem 1rem .25rem rgba(0, 0, 0, 0.151);
-}
 .spot-light {
-  background-color: #283AC7;
+  background-color: #285ac7;
   color: white;
 }
 .day-of-week {
@@ -95,4 +87,54 @@ form {
 }
 .date {
   font-size: .6rem;
+}
+
+
+/* DATE DETAILS & NOTES */
+.date-details {
+  background-color: #fff;
+  border-radius: .5rem;
+  padding: 1rem;
+  margin-top: 1rem;
+  box-shadow: 0 .25rem 1rem .25rem rgba(0, 0, 0, 0.151);
+}
+.date-details .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.date-details .wrapper .btn {
+  background-color: #28c77d;
+  color: white;
+  padding: .5rem;
+  font-size: .85rem;
+  border-radius: .5rem;
+}
+.btn:hover {
+  cursor: pointer;
+}
+.submit-note {
+  background-color: #28c77d;
+}
+.note-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 8rem;
+}
+.note-form input, .note-form textarea{
+  border: none;
+  outline: none;
+  background-color: rgba(192, 194, 201, 0.507);
+  padding: .5rem;
+  font-size: 1rem;
+}
+
+/* EVENTS CARD */
+.events {
+  background-color: #fff;
+  border-radius: .5rem;
+  padding: 1rem;
+  margin-top: 1rem;
+  box-shadow: 0 .25rem 1rem .25rem rgba(0, 0, 0, 0.151);
 }
