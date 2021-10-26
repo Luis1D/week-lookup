@@ -1,20 +1,18 @@
 .App {
   width: 90%;
+  max-width: 40rem;
   margin: 0 auto;
   margin-top: 1rem;
   border-radius: .5rem;
   padding: 0 1rem .5rem 1rem;
 }
-/* h1 {
-  width: 100%;
-  text-align: left;
-} */
-/* form {
+
+form {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
   margin-top: 1rem;
-} */
+}
 
 .text-input {
   width: 90%;
@@ -80,9 +78,17 @@
   border-radius: .5rem;
   font-weight: bold;
 }
+
+.date-details {
+  background-color: #fff;
+  border-radius: .5rem;
+  padding: 1rem;
+  margin-top: 1rem;
+  box-shadow: 0 .25rem 1rem .25rem rgba(0, 0, 0, 0.151);
+}
 .spot-light {
-  border: .15rem solid #283bc73d;
-  color: #2872c7
+  background-color: #283AC7;
+  color: white;
 }
 .day-of-week {
   font-size: .6rem;

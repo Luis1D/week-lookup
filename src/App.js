@@ -2,11 +2,11 @@ import './App.css';
 import React, { useState } from 'react';
 
 function App() {
-  const [date, setTheDate] = useState();
+  const [date, setTheDate] = useState({ value: new Date(), query: false, queryData: "" });
   const [week, setWeek] = useState();
+  const [selectedDate, setSelectedDate] = useState();
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   const days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
-
 
   const findWeek = (dateInput) => {
     let dateObj = new Date(dateInput);
@@ -21,56 +21,60 @@ function App() {
     return monthArr;
   }
 
-  // const handleChange = e => {
-  //   setTheDate(e.target.value);
-  // }
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   let week = findWeek(date);
-  //   setWeek(week);
-  // }
+  const handleChange = e => {
+    setTheDate({ value: date.value, query: false, queryData: e.target.value });
+  }
+  const handleSubmit = e => {
+    e.preventDefault();
+    setTheDate({ value: new Date(date.queryData), query: true });
+    let week = findWeek(date.value);
+    setWeek(week);
+  }
 
   const defaultWeek = () => {
-    let today = new Date();
-    setTheDate(today);
-    let currentWeek = findWeek(today)
+    let currentWeek = findWeek(date.value)
     setWeek(currentWeek);
   }
 
   const nextMonth = () => {
-    const month = new Date(date.setFullYear(date.getFullYear(), date.getMonth() + 1, 1))
+    const month = new Date(date.value.setFullYear(date.value.getFullYear(), date.value.getMonth() + 1, 1))
+    setTheDate(month);
+    let week = findWeek(month);
+    setWeek(week);
+  }
+  const prevMonth = () => {
+    const month = new Date(date.value.setFullYear(date.value.getFullYear(), date.value.getMonth() - 1, 1))
     setTheDate(month);
     let week = findWeek(month);
     setWeek(week);
   }
 
-  const prevMonth = () => {
-    const month = new Date(date.setFullYear(date.getFullYear(), date.getMonth() - 1, 1))
-    setTheDate(month);
-    let week = findWeek(month);
-    setWeek(week);
+  const dateSelectionStyles = day => {
+    if (day.getDate() === date.value.getDate()) {
+      return "spot-light week-card";
+    }
+    return "week-card";
   }
   
   return (
     <div className="App">
-      {/* <form onSubmit={ handleSubmit }>
-        <input type="text" placeholder="XX/XX/XXXX" onChange={handleChange} className="text-input"/>
+      <form onSubmit={ handleSubmit }>
+        <input type="text" placeholder="Lookup a date.." onChange={handleChange} className="text-input"/>
         <input type="submit" className="input-btn"/>
       </form>
-      <hr /> */}
       <div className="card-wrapper">
         <div className="month-picker">
           <button className="month-picker-btn" onClick={ prevMonth }>{"<"}</button>
-          { date ? <h2 className="month">{ months[date.getMonth()] + " " + date.getFullYear() }</h2> : null }
+          { date.value ? <h2 className="month">{ months[date.value.getMonth()] + " " + date.value.getFullYear() }</h2> : null }
           <button className="month-picker-btn" onClick={ nextMonth }>{">"}</button>
         </div>
         <div className="card-container">
         {
-          week ? week.map(day => {
+          week || date.query ? week.map(day => {
             return <div 
               key={day} 
-              className={ day.getDate() === date.getDate() ? "spot-light week-card" : "week-card" }
-              // onClick={ selectDate }
+              className={ dateSelectionStyles(day) }
+              onClick={ () => setTheDate({ value: day }) }
               >
               <span className="day-of-week">{ days[day.getDay()] }</span>
               <span className="date">{ day.getDate() }</span>
@@ -78,6 +82,13 @@ function App() {
           }) : defaultWeek()
         }
         </div>
+      </div>
+      <div className="date-details">
+        {
+          date.value ? <div>
+            <h3>{ days[date.value.getDay()] + " " + months[date.value.getMonth()] + " " + date.value.getDate() + " " + date.value.getFullYear() }</h3> 
+          </div> : null
+        }
       </div>
     </div>
   );
