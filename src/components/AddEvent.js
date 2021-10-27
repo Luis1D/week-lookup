@@ -10,9 +10,6 @@ const AddEvent = () => {
         let time = new Date();
         let timeCreated = time.toLocaleTimeString("en-US");  
         const value = e.target.value;
-        if (e.target.type === "radio") {
-          console.log(e.target.value)
-        }
         setNoteProcess({
           list: {
             ...noteProcess.list,

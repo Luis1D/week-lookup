@@ -25,7 +25,7 @@ const EventFeed = () => {
                             return <div key={ note.id } className="notes-details-container">
                                 <div className="title-desc">
                                     <div className="title-status-container">
-                                        <span className={ note.category }></span>
+                                        <span className={ note.category + " feed-status"}></span>
                                         <span className="title">{ note.title }</span>
                                     </div>
                                     <span className="date">{ note.date.value.toLocaleString().split(",")[0] }</span>

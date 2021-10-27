@@ -31,9 +31,9 @@ function App() {
     <DateContext.Provider value={{ date, week, setTheDate, setWeek, findWeek, months, days }}>
       <EventContext.Provider value={{ notesList, noteProcess, setNotesList, setNoteProcess }}>
         <div className="App">
-          <AddEvent />
           <Search />
           <Calendar />
+          <AddEvent />
           <EventFeed />
         </div>
       </EventContext.Provider>

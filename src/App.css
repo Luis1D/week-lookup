@@ -20,7 +20,6 @@ form {
   outline: none;
   border-radius: .5rem;
   border: none;
-  /* font-weight: bold; */
   font-size: .85rem;
   background-color: rgb(37, 37, 39);
   color: #fff;
@@ -35,6 +34,8 @@ form {
   background-color: #285ac7;
   color: white;
 }
+
+/* CALENDAR */
 .month-picker {
   display: flex;
   justify-content: space-between;
@@ -82,6 +83,30 @@ form {
   justify-content: space-between;
   border-radius: .5rem;
   font-weight: bold;
+  position: relative;
+  max-width: 2rem;
+}
+
+
+.card-container .calendar-status {
+  display: inline-block;
+  position: absolute;
+  width: .5rem;
+  height: .5rem;
+  margin-top: .15rem;
+  border-radius: 1rem;
+  right: .25rem;
+  bottom: .5rem;
+}
+
+.card-container .personal {
+  background-color: rgb(0, 218, 0);
+}
+.card-container .work {
+  background-color: rgb(255, 0, 255);
+}
+.card-container .errand {
+  background-color: rgb(255, 196, 0);
 }
 .spot-light {
   background-color: #285ac7;
@@ -169,21 +194,21 @@ form {
   width: 1.25rem;
   margin-right: .25rem;
 }
-.personal, .work, .errand {
+.title-status-container .feed-status {
   display: inline-block;
   width: .75rem;
   height: .75rem;
   margin-right: .45rem;
   border-radius: 1rem;
 }
-.personal {
-  background-color: green;
+.title-status-container .personal {
+  background-color: rgb(0, 218, 0);
 }
-.work {
-  background-color: purple;
+.title-status-container .work {
+  background-color: rgb(255, 0, 255);
 }
-.errand {
-  background-color: orange;
+.title-status-container .errand {
+  background-color: rgb(255, 196, 0);
 }
 .title-desc {
   display: flex;

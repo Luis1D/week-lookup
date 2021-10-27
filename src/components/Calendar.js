@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
 import DateContext from "../context/dateContext.js";
+import EventContext from "../context/eventContext.js";
 
 const Calendar = () => {
     const { date, week, setTheDate, setWeek, findWeek, months, days } = useContext(DateContext)
+    const { notesList } = useContext(EventContext);
 
     const nextMonth = () => {
         let dateRef = new Date(date.value);
@@ -37,13 +39,17 @@ const Calendar = () => {
             <div className="card-container">
             {
             week || date.query ? week.map(day => {
-                return <div 
-                key={day} 
-                className={ dateSelectionStyles(day) }
-                onClick={ () => setTheDate({ value: day }) }
-                >
-                <span className="day-of-week">{ days[day.getDay()] }</span>
-                <span className="date">{ day.getDate() }</span>
+                return <div key={day} className={ dateSelectionStyles(day) } onClick={ () => setTheDate({ value: day }) }>
+                    <span className="day-of-week">{ days[day.getDay()] }</span>
+                    <span className="date">{ day.getDate() }</span>
+                    {
+                        notesList.length > 0 ? notesList.map(note => {
+                            if (note.date.value === day) {
+                                return <span key={ note.id } className={ note.category + " calendar-status" }></span>
+                            }
+                            return null
+                        }) : null
+                    }
                 </div>
             }) : null
             }
