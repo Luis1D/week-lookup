@@ -10,12 +10,16 @@ const AddEvent = () => {
         let time = new Date();
         let timeCreated = time.toLocaleTimeString("en-US");  
         const value = e.target.value;
+        if (e.target.type === "radio") {
+          console.log(e.target.value)
+        }
         setNoteProcess({
           list: {
             ...noteProcess.list,
             [e.target.name]: value,
             date: date,
             time: timeCreated,
+            category: [e.target.type === "radio" ? e.target.value : ""],
             id: Math.random()
           },
           noteInProgress: true
@@ -47,9 +51,24 @@ const AddEvent = () => {
           }
         </div>
         {
-          noteProcess.noteInProgress ? <form className="note-form">
+          noteProcess.noteInProgress ? 
+          <form className="note-form">
             <input name="title" value={ noteProcess.list.title } type="text" placeholder="Title" onChange={ addNote }/>
             <textarea name="description" value={ noteProcess.list.description } type="text" placeholder="Description" onChange={ addNote }/>
+            <div className="checkbox-container">
+              <label className="radio-btn">
+                <input type="radio" name="type" value="work" onChange={ addNote }/>
+                Work
+              </label>
+              <label className="radio-btn">
+                <input type="radio" name="type" value="personal" onChange={ addNote } />
+                Personal
+              </label>
+              <label className="radio-btn">
+                <input type="radio" name="type" value="errand" onChange={ addNote } />
+                Errand
+              </label>
+            </div>
           </form>
           : null
         }

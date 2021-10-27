@@ -24,7 +24,10 @@ const EventFeed = () => {
                         if (note.date.value.getMonth() === date.value.getMonth()) {
                             return <div key={ note.id } className="notes-details-container">
                                 <div className="title-desc">
-                                    <span className="title">{ note.title }</span>
+                                    <div className="title-status-container">
+                                        <span className={ note.category }></span>
+                                        <span className="title">{ note.title }</span>
+                                    </div>
                                     <span className="date">{ note.date.value.toLocaleString().split(",")[0] }</span>
                                     <span className="description">{ note.description }</span>
                                 </div>

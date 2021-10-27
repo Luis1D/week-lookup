@@ -22,7 +22,7 @@ function App() {
   }
   const [date, setTheDate] = useState({ value: new Date(), query: false, queryData: "" });
   const [week, setWeek] = useState(findWeek(date.value));
-  const [noteProcess, setNoteProcess] = useState({ list: { title: "", description: "" }, noteInProgress: false });
+  const [noteProcess, setNoteProcess] = useState({ list: { title: "", description: "", category: "" }, noteInProgress: false });
   const [notesList, setNotesList] = useState([]);
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   const days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
