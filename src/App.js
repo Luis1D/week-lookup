@@ -103,10 +103,26 @@ function App() {
 
   return (
     <div className="App">
-      <form onSubmit={ handleSubmit }>
-        <input type="text" placeholder="Lookup a date.." onChange={handleChange} className="text-input"/>
-        <input type="submit" className="input-btn"/>
-      </form>
+      <div className="date-details">
+        <div className="wrapper">
+          {
+            date.value ? <div>
+              <h3>{ days[date.value.getDay()] + " " + months[date.value.getMonth()] + " " + date.value.getDate() + " " + date.value.getFullYear() }</h3> 
+            </div> : null
+          }
+          {
+            noteProcess.noteInProgress ? <span className="submit-note" onClick={ submitNote }>Submit</span>
+            : <img src="../add.png" className="btn" onClick={ () => setNoteProcess({list: noteProcess.list, noteInProgress: true }) } />
+          }
+        </div>
+        {
+          noteProcess.noteInProgress ? <form className="note-form">
+            <input name="title" value={ noteProcess.list.title } type="text" placeholder="Title" onChange={ addNote }/>
+            <textarea name="description" value={ noteProcess.list.description } type="text" placeholder="Description" onChange={ addNote }/>
+          </form>
+          : null
+        }
+      </div>
       <div className="card-wrapper">
         <div className="month-picker">
 
@@ -130,26 +146,10 @@ function App() {
         }
         </div>
       </div>
-      <div className="date-details">
-        <div className="wrapper">
-          {
-            date.value ? <div>
-              <h3>{ days[date.value.getDay()] + " " + months[date.value.getMonth()] + " " + date.value.getDate() + " " + date.value.getFullYear() }</h3> 
-            </div> : null
-          }
-          {
-            noteProcess.noteInProgress ? <span className="submit-note btn" onClick={ submitNote }>Submit</span>
-            : <span className="btn" onClick={ () => setNoteProcess({list: noteProcess.list, noteInProgress: true }) }>Add Note</span>
-          }
-        </div>
-        {
-          noteProcess.noteInProgress ? <form className="note-form">
-            <input name="title" value={ noteProcess.list.title } type="text" placeholder="Title" onChange={ addNote }/>
-            <textarea name="description" value={ noteProcess.list.description } type="text" placeholder="Description" onChange={ addNote }/>
-          </form>
-          : null
-        }
-      </div>
+      <form onSubmit={ handleSubmit }>
+        <input type="text" placeholder="Search.." onChange={handleChange} className="text-input"/>
+        <button type="submit" className="input-btn">Search</button>
+      </form>
       {
         date.value ? <div className="events">
           <h3>{`All notes for ${months[date.value.getMonth()]}`}</h3>

@@ -20,8 +20,10 @@ form {
   outline: none;
   border-radius: .5rem;
   border: none;
-  font-weight: bold;
-  font-size: 1rem;
+  /* font-weight: bold; */
+  font-size: .85rem;
+  background-color: rgb(37, 37, 39);
+  color: #fff;
 }
 .input-btn {
   width: 10rem;
@@ -43,10 +45,11 @@ form {
 }
 .card-wrapper {
   margin-top: 1rem;
-  background-color: white;
+  color: #fff;
   border-radius: 1rem;
   padding: .75rem;
   box-shadow: 0 .25rem 1rem .25rem rgba(0, 0, 0, 0.151);
+  background-color: rgb(37, 37, 39);
 }
 .month-picker-btn {
   border-radius: .25rem;
@@ -56,9 +59,11 @@ form {
   align-items: center;
   justify-content: center;
   font-weight: bold;
+  font-size: 1rem;
   box-shadow: 0 .05rem .15rem 0rem rgba(0, 0, 0, 0.507);
   border: none;
-  background-color: #fff;
+  background-color: rgb(22, 22, 22);
+  color: #fff;
 }
 .month-picker-btn:hover {
   cursor: pointer;
@@ -92,11 +97,12 @@ form {
 
 /* DATE DETAILS & NOTES */
 .date-details {
-  background-color: #fff;
   border-radius: .5rem;
   padding: 1rem;
   margin-top: 1rem;
   box-shadow: 0 .25rem 1rem .25rem rgba(0, 0, 0, 0.151);
+  background-color: rgb(37, 37, 39);
+  color: #fff;
 }
 .date-details .wrapper {
   display: flex;
@@ -109,12 +115,17 @@ form {
   padding: .5rem;
   font-size: .85rem;
   border-radius: .5rem;
+  width: 1rem;
 }
 .btn:hover {
   cursor: pointer;
 }
 .submit-note {
   background-color: #28c77d;
+  color: white;
+  padding: .5rem;
+  font-size: .85rem;
+  border-radius: .5rem;
 }
 .note-form {
   display: flex;
@@ -125,26 +136,29 @@ form {
 .note-form input, .note-form textarea{
   border: none;
   outline: none;
-  background-color: rgba(192, 194, 201, 0.507);
+  background-color: rgb(22, 22, 22);
+  color: #fff;
   padding: .5rem;
   font-size: 1rem;
 }
 
 /* EVENTS CARD */
 .events {
-  background-color: #fff;
+  background-color: rgb(37, 37, 39);
+  color: #fff;
   border-radius: .5rem;
   padding: 1rem;
   margin-top: 1rem;
   box-shadow: 0 .25rem 1rem .25rem rgba(0, 0, 0, 0.151);
 }
 .notes-details-container {
-  margin-top: .5rem;
-  background-color: rgba(192, 194, 201, 0.507);
+  margin-top: .75rem;
+  background-color: rgb(22, 22, 22);
   padding: .5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-radius: .5rem;
 }
 .date-delete-container {
   display: flex;
