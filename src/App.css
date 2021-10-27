@@ -138,3 +138,44 @@ form {
   margin-top: 1rem;
   box-shadow: 0 .25rem 1rem .25rem rgba(0, 0, 0, 0.151);
 }
+.notes-details-container {
+  margin-top: .5rem;
+  background-color: rgba(192, 194, 201, 0.507);
+  padding: .5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.date-delete-container {
+  display: flex;
+  flex-direction: column;
+}
+.date-delete-container .edit-btn {
+  background-color: #285ac7;
+  color: #fff;
+  border: none;
+  padding: .5rem;
+  font-size: .85rem;
+  border-radius: .5rem;
+}
+.date-delete-container .delete-btn {
+  margin-top: .5rem;
+  background-color: rgb(228, 74, 74);
+  color: #fff;
+  border: none;
+  padding: .5rem;
+  font-size: .85rem;
+  border-radius: .5rem;
+}
+.title-desc {
+  display: flex;
+  flex-direction: column;
+}
+.title-desc .title {
+  font-weight: bold;
+}
+
+.title-desc .date {
+  font-size: .75rem;
+  margin-top: .25rem;  
+}
