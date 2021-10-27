@@ -8,8 +8,7 @@ const AddEvent = () => {
 
     const addNote = (e) => {
         let time = new Date();
-        let timeCreated = time.toLocaleTimeString("en-US");
-      
+        let timeCreated = time.toLocaleTimeString("en-US");  
         const value = e.target.value;
         setNoteProcess({
           list: {

@@ -32,8 +32,8 @@ function App() {
       <EventContext.Provider value={{ notesList, noteProcess, setNotesList, setNoteProcess }}>
         <div className="App">
           <AddEvent />
-          <Calendar />
           <Search />
+          <Calendar />
           <EventFeed />
         </div>
       </EventContext.Provider>

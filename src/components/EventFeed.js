@@ -29,13 +29,12 @@ const EventFeed = () => {
                                     <span className="description">{ note.description }</span>
                                 </div>
                                 <div className="date-delete-container">
-                                    <button className="edit-btn">Edit</button>
-                                    <button className="delete-btn" onClick={ () => deleteNote(note.id) }>Delete</button>
+                                    <img src="../delete.png" alt="Delete" className="delete-btn" onClick={ () => deleteNote(note.id) } />
                                 </div>
                             </div>
                         }
-                        return <div key={ Math.random() }>No events found..</div>;
-                        }) : null
+                        return <div key={ Math.random() }>No events found..</div>
+                        }) : <div key={ Math.random() }>No events found..</div>
                     }
                 </div> : null
             }
