@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import DateContext from "../context/dateContext.js";
 import EventContext from "../context/eventContext.js";
 
@@ -31,9 +31,7 @@ const EventFeed = () => {
                                     <span className="date">{ note.date.value.toLocaleString().split(",")[0] }</span>
                                     <span className="description">{ note.description }</span>
                                 </div>
-                                <div className="date-delete-container">
-                                    <img src="../delete.png" alt="Delete" className="delete-btn" onClick={ () => deleteNote(note.id) } />
-                                </div>
+                                <div className="date-delete-container" onClick={ () => deleteNote(note.id) }>X</div>
                             </div>
                         }
                         return <div key={ Math.random() }>No events found..</div>

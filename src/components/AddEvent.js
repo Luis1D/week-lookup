@@ -33,6 +33,15 @@ const AddEvent = () => {
           noteInProgress: !noteProcess.noteInProgress  
         })
       }
+      const cancelNote = () => {
+        setNoteProcess({ 
+          list: {
+            title: "",
+            description: ""
+          },
+          noteInProgress: !noteProcess.noteInProgress  
+        })
+      }
 
     return (
         <div className="date-details">
@@ -43,7 +52,10 @@ const AddEvent = () => {
             </div> : null
           }
           {
-            noteProcess.noteInProgress ? <span className="submit-note" onClick={ submitNote }>Submit</span>
+            noteProcess.noteInProgress ? <div className="note-actions">
+              <span className="submit-note" onClick={ submitNote }>Submit</span>
+              <span className="cancel-note" onClick={ cancelNote }>X</span>
+            </div>
             : <img src="../add.png" alt="Add Event" className="btn" onClick={ () => setNoteProcess({list: noteProcess.list, noteInProgress: true }) } />
           }
         </div>
@@ -53,15 +65,15 @@ const AddEvent = () => {
             <input name="title" value={ noteProcess.list.title } type="text" placeholder="Title" onChange={ addNote }/>
             <textarea name="description" value={ noteProcess.list.description } type="text" placeholder="Description" onChange={ addNote }/>
             <div className="checkbox-container">
-              <label className="radio-btn">
-                <input type="radio" name="type" value="work" onChange={ addNote }/>
+              <label className="radio-btn work-input">
+                <input type="radio" name="type" value="work" onChange={ addNote } />
                 Work
               </label>
-              <label className="radio-btn">
+              <label className="radio-btn personal-input">
                 <input type="radio" name="type" value="personal" onChange={ addNote } />
                 Personal
               </label>
-              <label className="radio-btn">
+              <label className="radio-btn errand-input">
                 <input type="radio" name="type" value="errand" onChange={ addNote } />
                 Errand
               </label>
