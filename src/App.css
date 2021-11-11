@@ -77,21 +77,29 @@ form {
 }
 .week-card {
   margin: .5rem .5rem 0 0;
-  padding: .5rem;
+  padding: .5rem .25rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
   border-radius: .5rem;
   font-weight: bold;
   position: relative;
   max-width: 2rem;
 }
-
+.day-container {
+  display: flex;
+  flex-direction: column;
+}
+.status-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
 .card-container .calendar-status {
   display: inline-block;
-  position: absolute;
-  width: .5rem;
-  height: .5rem;
+  width: .40rem;
+  height: .40rem;
   margin-top: .15rem;
   border-radius: 1rem;
   right: .25rem;

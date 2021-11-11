@@ -4,7 +4,7 @@ import EventContext from "../context/eventContext.js";
 
 const Calendar = () => {
     const { date, week, setTheDate, setWeek, findWeek, months, days } = useContext(DateContext)
-    const { notesList } = useContext(EventContext);
+    const { notesList, eventTypeStats } = useContext(EventContext);
     const [eventOnDay, setEventOnDay] = useState([]);
 
     const nextMonth = () => {
@@ -28,6 +28,21 @@ const Calendar = () => {
         return "week-card";
     }
 
+    const handleEventData = (day) => {
+        let data = [];
+        for (let eventType in eventTypeStats) {
+            let eventTypeList = eventTypeStats[eventType];
+            eventTypeList.forEach(val => {
+                if (val.date.value.getDate() === day.getDate()) {
+                    data.push(val)
+                }
+            });
+        }
+        if (data.length > 0) {
+            return data.map(val => <span key={ val.id } className={ val.category + " calendar-status" }></span>)
+        }
+    }
+
     useEffect(() => {
         setEventOnDay(notesList);
     }, [notesList])
@@ -38,24 +53,22 @@ const Calendar = () => {
             <button className="month-picker-btn" onClick={ prevMonth }>{"<"}</button>
             { date.value ? <h2 className="month">{ months[date.value.getMonth()] + " " + date.value.getFullYear() }</h2> : null }
             <button className="month-picker-btn" onClick={ nextMonth }>{">"}</button>
-
             </div>
             <div className="card-container">
             {
             week || date.query ? week.map(day => {
                 return <div key={day} className={ dateSelectionStyles(day) } onClick={ () => setTheDate({ value: day }) }>
-                    <span className="day-of-week">{ days[day.getDay()] }</span>
-                    <span className="date">{ day.getDate() }</span>
+                    <div className="day-container">
+                        <span className="day-of-week">{ days[day.getDay()] }</span>
+                        <span className="date">{ day.getDate() }</span>
+                    </div>
 
-                    {
-                        eventOnDay ? eventOnDay.map(note => {
-                            
-                            if (note.date.value.getDate() === day.getDate() && note.date.value.getMonth() === day.getMonth()) {
-                                return <span key={ note.id } className={ note.category + " calendar-status" }></span>
-                            }
-                            return null
-                        }) : null
-                    }
+                    <div className="status-container">
+                        {
+                            eventOnDay.length > 0 ? handleEventData(day)
+                            : null
+                        }
+                    </div>
 
                 </div>
             }) : null
