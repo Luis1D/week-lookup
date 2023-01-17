@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import DateContext from "../context/dateContext.js";
 import EventContext from "../context/eventContext.js";
 
 const Calendar = () => {
     const { date, week, setTheDate, setWeek, findWeek, months, days } = useContext(DateContext)
-    const { notesList, eventTypeStats } = useContext(EventContext);
-    const [eventOnDay, setEventOnDay] = useState([]);
+    const { notesList } = useContext(EventContext);
 
     const nextMonth = () => {
         let dateRef = new Date(date.value);
@@ -28,25 +27,6 @@ const Calendar = () => {
         return "week-card";
     }
 
-    const handleEventData = (day) => {
-        let data = [];
-        for (let eventType in eventTypeStats) {
-            let eventTypeList = eventTypeStats[eventType];
-            eventTypeList.forEach(val => {
-                if (val.date.value.getDate() === day.getDate()) {
-                    data.push(val)
-                }
-            });
-        }
-        if (data.length > 0) {
-            return data.map(val => <span key={ val.id } className={ val.category + " calendar-status" }></span>)
-        }
-    }
-
-    useEffect(() => {
-        setEventOnDay(notesList);
-    }, [notesList])
-
     return (
         <div className="card-wrapper">
             <div className="month-picker">
@@ -65,7 +45,11 @@ const Calendar = () => {
 
                     <div className="status-container">
                         {
-                            eventOnDay.length > 0 ? handleEventData(day)
+                            notesList.length > 0 ? notesList.map(note => {
+                                if (note.date.value.getDate() === day.getDate() && note.date.value.getMonth() === day.getMonth() && note.date.value.getFullYear() === day.getFullYear()) {
+                                    return <span key={ note.id } className={ note.category + " calendar-status" }></span>
+                                }
+                            })
                             : null
                         }
                     </div>

@@ -21,7 +21,7 @@ const EventFeed = () => {
                     {
                         notesList.length > 0 ?
                         notesList.map(note => {
-                        if (note.date.value.getMonth() === date.value.getMonth()) {
+                        if (note.date.value.getMonth() === date.value.getMonth() && note.date.value.getFullYear() === date.value.getFullYear()) {
                             return <div key={ note.id } className="notes-details-container">
                                 <div className="title-desc">
                                     <div className="title-status-container">
@@ -34,8 +34,7 @@ const EventFeed = () => {
                                 <div className="date-delete-container" onClick={ () => deleteNote(note.id) }>X</div>
                             </div>
                         }
-                        return <div key={ Math.random() }>No events found..</div>
-                        }) : <div key={ Math.random() }>No events found..</div>
+                        }) : <div>No events found.. </div>
                     }
                 </div> : null
             }

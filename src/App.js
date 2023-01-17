@@ -31,18 +31,18 @@ function App() {
   useEffect(() => {
     if (notesList.length > 0) {
       notesList.forEach(val => {
-
         setEventTypeStats({ errand: [...notesList.filter(e => e.type === "errand")], personal: [...notesList.filter(e => e.type === "personal")], work: [...notesList.filter(e => e.type === "work")] })
-        
       })
     } else {
       setEventTypeStats({ errand: [], personal: [], work: [] })
     }
   }, [notesList])
 
+  console.log(eventTypeStats);
+
   return (
     <DateContext.Provider value={{ date, week, setTheDate, setWeek, findWeek, months, days }}>
-      <EventContext.Provider value={{ notesList, noteProcess, setNotesList, setNoteProcess, eventTypeStats }}>
+      <EventContext.Provider value={{ notesList, noteProcess, setNotesList, setNoteProcess }}>
         <div className="App">
           <Search />
           <Calendar />
